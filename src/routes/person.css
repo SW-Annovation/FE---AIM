@@ -2,6 +2,35 @@
 
 .task-progress {
   margin: 0 auto;
+  width: 19rem;
+  overflow: hidden;
+  border-radius: 0.875rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  color: #4a5568;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+.task-progress1 {
+  margin: 0 auto;
+  width: 60rem;
+  overflow: hidden;
+  border-radius: 0.875rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  color: #4a5568;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 90%;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.task-progress2 {
+  margin: 0 auto;
   width: 18rem;
   overflow: hidden;
   border-radius: 0.875rem;
@@ -9,15 +38,28 @@
   padding: 1rem;
   color: #4a5568;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
-
-.task-progress1 {
+.task-progress3 {
   margin: 0 auto;
-  width: 30rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 15rem;
   overflow: hidden;
   border-radius: 0.875rem;
   background-color: #ffffff;
   padding: 1rem;
   color: #4a5568;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

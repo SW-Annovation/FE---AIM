@@ -1,7 +1,12 @@
 import React from 'react'
 import { Layout } from '@/components/layout'
 import styled from 'styled-components'
-
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import video1 from './videos/1.mp4'
+import video2 from './videos/2.mp4'
+import video3 from './videos/3.mp4'
+import video4 from './videos/4.mp4'
 const VideoCard = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -21,37 +26,89 @@ const Video = () => {
   const videos = [
     {
       id: 1,
-      url: 'https://www.youtube.com/watch?v=your_video_id_1',
-      description: 'This is the first video description.',
+      url: video1,
+      description: (
+        <>
+          질문
+          <br />
+          1번: 자기소개를 해주세요
+          <br />
+          2번: 이 직무에 지원한 이유는 무엇인가요?
+        </>
+      ),
+      autoplay: false,
     },
     {
       id: 2,
-      url: 'https://www.youtube.com/watch?v=your_video_id_2',
-      description: 'This is the second video description.',
+      url: video2,
+      description: (
+        <>
+          질문
+          <br />
+          1번: 본인은 개발자란 무엇이라고 생각하나요?
+          <br />
+          2번: 이 직무에 지원한 이유는 무엇인가요?
+        </>
+      ),
+      autoplay: false,
     },
     {
       id: 3,
-      url: 'https://www.youtube.com/watch?v=your_video_id_2',
-      description: 'This is the second video description.',
+      url: video3,
+      description: (
+        <>
+          질문
+          <br />
+          1번: 객체지향에 대해 설명해주세요.
+          <br />
+          2번: 대용량 트래픽 최적화에 가장 <br />
+          효율적인 방법은 무엇일까요?
+        </>
+      ),
+      autoplay: false,
     },
     {
       id: 4,
-      url: 'https://www.youtube.com/watch?v=your_video_id_2',
-      description: 'This is the second video description.',
+      url: video4,
+      description: (
+        <>
+          질문
+          <br />
+          1번: 저를 당황시켜주세요!
+          <br />
+          2번: 당신은 저를 사랑하십니까?
+        </>
+      ),
+      autoplay: false,
     },
     {
-      id: 5,
-      url: 'https://www.youtube.com/watch?v=your_video_id_2',
-      description: 'This is the second video description.',
+      url: video1,
+      description: (
+        <>
+          질문
+          <br />
+          1번: 자기소개를 해주세요
+          <br />
+          2번: 이 직무에 지원한 이유는 무엇인가요?
+        </>
+      ),
+      autoplay: false,
     },
     {
-      id: 6,
-      url: 'https://www.youtube.com/watch?v=your_video_id_2',
-      description: 'This is the second video description.',
+      url: video1,
+      description: (
+        <>
+          질문
+          <br />
+          1번: 자기소개를 해주세요
+          <br />
+          2번: 이 직무에 지원한 이유는 무엇인가요?
+        </>
+      ),
+      autoplay: false,
     },
     // Add more videos as needed
   ]
-
   return (
     <Layout>
       <VideoSection>

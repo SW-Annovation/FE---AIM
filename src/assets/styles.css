@@ -1868,6 +1868,9 @@ select {
 .text-xl {
   font-size: 1.25rem !important;
 }
+.font-\[25px\] {
+  font-weight: 25px !important;
+}
 .font-bold {
   font-weight: 700 !important;
 }

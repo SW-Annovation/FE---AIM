@@ -38,11 +38,11 @@ function FileUploadForm({
       setQuestion(response.data)
       localStorage.setItem('question', JSON.stringify(response.data))
       setFile(null)
-      setSuccess(true)
       setIsModalOpen(true)
+      setSuccess(true)
     } catch (error) {
       console.error('Error uploading file:', error)
-      setErrorMessage('다시 제출해주세요.')
+      // setErrorMessage('다시 제출해주세요.')
     } finally {
       setIsModalOpen(true) // Show the modal whether successful or not
     }

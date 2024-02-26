@@ -36,6 +36,11 @@ const Box = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  @media (max-width: 570px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 `
 const Circle = styled.div`
   width: 20px;
@@ -55,7 +60,12 @@ function InterviewPage() {
   const [jobTitle, setJobTitle] = useState('')
   const [startTime, setStartTime] = useState(null)
   const [elapsedTime, setElapsedTime] = useState(0)
-
+  const [buttonText2, setButtonText2] = useState('질문듣기')
+  const [buttonText3, setButtonText3] = useState('꼬리질문 듣기 1번')
+  const [followUpQuestionIndex, setFollowUpQuestionIndex] = useState(0)
+  const [activeSection, setActiveSection] = useState('mainQuestion')
+  const [mainQuestion, setMainQuestion] = useState('질문 듣기 버튼을 눌러주세요!') // Placeholder for main question content
+  const [followUpQuestion, setFollowUpQuestion] = useState('꼬리질문 듣기 버튼을 눌러주세요!') // Placeholder for follow-up question content
   useEffect(() => {
     setJobTitle(localStorage.getItem('jobTitle'))
     const startVideo = async () => {
@@ -157,19 +167,60 @@ function InterviewPage() {
     navigate('/')
   }
   function ResultButton() {
-    navigate('/result')
+    navigate('result')
   }
-  const readMessage = (text) => {
-    const storedQuestion = localStorage.getItem('question')
+  const readMessage = async () => {
+    try {
+      const response = await axios.get('http://13.124.138.144:8080/main-question')
 
-    if (storedQuestion) {
-      // Use the getSpeech function to read the question
-      getSpeech(storedQuestion)
-      console.log(storedQuestion)
-    } else {
-      console.log('No question available in local storage.')
+      if (response.data) {
+        // Use the getSpeech function to read the question
+        getSpeech(response.data)
+        console.log(response.data)
+        setMainQuestion(response.data)
+        setButtonText2('다음질문듣기')
+      } else {
+        console.log('No question available in the response.')
+        // If the response is null, set a default message
+        getSpeech('준비된 질문을 모두 답변하였습니다.')
+      }
+    } catch (error) {
+      console.error('Error fetching question:', error)
+      // Handle the error and set a default message
+      getSpeech('준비된 질문을 모두 답변하였습니다.')
     }
   }
+  const readFollowUpQuestion = async () => {
+    try {
+      const response = await axios.get(
+        `http://13.124.138.144:8080/follow-up-question/${followUpQuestionIndex}`,
+      )
+
+      if (response.data) {
+        getSpeech(`꼬리 질문 ${followUpQuestionIndex + 1}번째 입니다.`)
+        setFollowUpQuestion(response.data)
+        getSpeech(response.data)
+        console.log(response.data)
+
+        // Update button text and increment the follow-up question index
+        if (followUpQuestionIndex < 4) {
+          setButtonText3(`다음 꼬리질문 듣기 (${followUpQuestionIndex + 2}번)`)
+          setFollowUpQuestionIndex((prevIndex) => prevIndex + 1)
+        } else {
+          setButtonText3('꼬리질문이 없습니다.')
+        }
+      } else {
+        console.log('No follow-up question available in the response.')
+        // If the response is null, set a default message
+        getSpeech('꼬리질문이 없습니다.')
+      }
+    } catch (error) {
+      console.error('Error fetching follow-up question:', error)
+      // Handle the error and set a default message
+      getSpeech('꼬리질문이 없습니다.')
+    }
+  }
+
   return (
     <Container>
       <VideoContainer>
@@ -194,6 +245,10 @@ function InterviewPage() {
           style={{ width: '100%', height: '80vh', transform: 'scaleX(-1)' }}
         />
         {loadingVideo && <p className="mt-4 text-indigo-600">로딩 중입니다...</p>}
+        <div className="mt-4 text-center font-[25px] text-white">
+          <p>메인 질문: {mainQuestion}</p>
+          <p>꼬리 질문: {followUpQuestion}</p>
+        </div>
       </VideoContainer>
       <Box>
         <button
@@ -210,10 +265,16 @@ function InterviewPage() {
           {buttonText}
         </button>
         <button
-          onClick={() => readMessage('질문듣기')}
+          onClick={() => readMessage()}
           className="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200"
         >
-          질문듣기
+          {buttonText2}
+        </button>
+        <button
+          onClick={() => readFollowUpQuestion()}
+          className="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200"
+        >
+          {buttonText3}
         </button>
         <button
           className="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200"

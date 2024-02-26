@@ -236,7 +236,7 @@ export default function ResultPage() {
                         </span>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <a href="/peresult" className="text-indigo-600 hover:text-indigo-900">
+                        <a href="peresult" className="text-indigo-600 hover:text-indigo-900">
                           결과 확인하기
                         </a>
                       </td>
