@@ -75,7 +75,7 @@ const PersonalResultPage = () => {
         const response = await axios.get('http://13.124.138.144:8080/get-feedback-numeric')
         const finalData = JSON.parse(response.data)
         setFinal(finalData)
-        console.log(finalData)
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching video response:', error)
       }

@@ -173,7 +173,7 @@ export default function ResultPage() {
                         </div>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">섹시가이</p>
+                        <p className="whitespace-no-wrap text-gray-900">쿠팡-FE 개발자</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <p className="whitespace-no-wrap text-gray-900">25/02/2024</p>
@@ -214,7 +214,7 @@ export default function ResultPage() {
                         </div>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">User</p>
+                        <p className="whitespace-no-wrap text-gray-900">배민-BE개발자</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <p className="whitespace-no-wrap text-gray-900">22/02/2024</p>

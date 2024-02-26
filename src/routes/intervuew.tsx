@@ -167,7 +167,7 @@ function InterviewPage() {
     navigate('/')
   }
   function ResultButton() {
-    navigate('result')
+    navigate('/result')
   }
   const readMessage = async () => {
     try {
