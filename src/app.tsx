@@ -8,6 +8,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import InterviewPage from '@/routes/intervuew'
 import ResultPage from '@/routes/result'
 import ErrorPage from '@/routes/error'
+import PersonalResultPage from '@/routes/personalResult'
+import VideoPage from '@/routes/video'
 export default function App() {
   const basename = import.meta.env.BASE_URL
 
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="support" element={<SupportPage />} />
           <Route path="interview" element={<InterviewPage />} />
           <Route path="result" element={<ResultPage />} />
+          <Route path="peresult" element={<PersonalResultPage />} />
+          <Route path="video" element={<VideoPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ScrollToTop>

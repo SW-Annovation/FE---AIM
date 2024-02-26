@@ -82,15 +82,15 @@ export default function ResultPage() {
                             </a>
                           </div>
                           <div className="ml-3">
-                            <p className="whitespace-no-wrap text-gray-900">Jean marc</p>
+                            <p className="whitespace-no-wrap text-gray-900">아이디 4</p>
                           </div>
                         </div>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">개발자</p>
+                        <p className="whitespace-no-wrap text-gray-900">삼성-SW개발자</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">12/09/2020</p>
+                        <p className="whitespace-no-wrap text-gray-900">27/02/2024</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <span className="text-green-900 relative inline-block px-3 py-1 font-semibold leading-tight">
@@ -123,15 +123,15 @@ export default function ResultPage() {
                             </a>
                           </div>
                           <div className="ml-3">
-                            <p className="whitespace-no-wrap text-gray-900">Marcus coco</p>
+                            <p className="whitespace-no-wrap text-gray-900">아이디 3</p>
                           </div>
                         </div>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">디자인어</p>
+                        <p className="whitespace-no-wrap text-gray-900">LG-디자이너</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">01/10/2012</p>
+                        <p className="whitespace-no-wrap text-gray-900">26/02/2024</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <span className="text-green-900 relative inline-block px-3 py-1 font-semibold leading-tight">
@@ -139,7 +139,14 @@ export default function ResultPage() {
                             aria-hidden="true"
                             className="bg-green-200 absolute inset-0 rounded-full opacity-50"
                           ></span>
-                          <span className="relative">분석 중..</span>
+                          <StatusIndicator status="분석 중.." />
+                          <span className="text-green-900 relative inline-block px-3 py-1 font-semibold leading-tight">
+                            <span
+                              aria-hidden="true"
+                              className="bg-green-200 absolute inset-0 rounded-full opacity-50"
+                            ></span>
+                            <span className="relative">분석 중..</span>
+                          </span>
                         </span>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
@@ -161,7 +168,7 @@ export default function ResultPage() {
                             </a>
                           </div>
                           <div className="ml-3">
-                            <p className="whitespace-no-wrap text-gray-900">Ecric marc</p>
+                            <p className="whitespace-no-wrap text-gray-900">아이디 2</p>
                           </div>
                         </div>
                       </td>
@@ -169,7 +176,7 @@ export default function ResultPage() {
                         <p className="whitespace-no-wrap text-gray-900">섹시가이</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">02/10/2018</p>
+                        <p className="whitespace-no-wrap text-gray-900">25/02/2024</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <span className="text-green-900 relative inline-block px-3 py-1 font-semibold leading-tight">
@@ -184,7 +191,7 @@ export default function ResultPage() {
                         </span>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                        <a href="peresult" className="text-indigo-600 hover:text-indigo-900">
                           결과 확인하기
                         </a>
                       </td>
@@ -202,7 +209,7 @@ export default function ResultPage() {
                             </a>
                           </div>
                           <div className="ml-3">
-                            <p className="whitespace-no-wrap text-gray-900">Julien Huger</p>
+                            <p className="whitespace-no-wrap text-gray-900">아이디 1</p>
                           </div>
                         </div>
                       </td>
@@ -210,7 +217,7 @@ export default function ResultPage() {
                         <p className="whitespace-no-wrap text-gray-900">User</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <p className="whitespace-no-wrap text-gray-900">23/09/2010</p>
+                        <p className="whitespace-no-wrap text-gray-900">22/02/2024</p>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <span className="text-green-900 relative inline-block px-3 py-1 font-semibold leading-tight">
@@ -218,11 +225,18 @@ export default function ResultPage() {
                             aria-hidden="true"
                             className="bg-green-200 absolute inset-0 rounded-full opacity-50"
                           ></span>
-                          <span className="relative">분석 완료</span>
+                          <StatusIndicator status="분석 완료" />
+                          <span className="text-green-900 relative inline-block px-3 py-1 font-semibold leading-tight">
+                            <span
+                              aria-hidden="true"
+                              className="bg-green-200 absolute inset-0 rounded-full opacity-50"
+                            ></span>
+                            <span className="relative">분석 완료</span>
+                          </span>
                         </span>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                        <a href="/peresult" className="text-indigo-600 hover:text-indigo-900">
                           결과 확인하기
                         </a>
                       </td>

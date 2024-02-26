@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         sans: ['Fira Sans', ...fontFamily.sans],
       },
+
       fontSize: {
         sm: '0.8rem',
         base: '1rem',

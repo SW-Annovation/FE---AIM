@@ -16,6 +16,8 @@ function FileUploadForm({
   const [file, setFile] = useState<File | null>(null)
   const [success, setSuccess] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [question, setQuestion] = useState<any>(null)
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
@@ -33,12 +35,16 @@ function FileUploadForm({
       // 서버 응답에 대한 처리 (response.data 등)
 
       console.log(response.data)
+      setQuestion(response.data)
+      localStorage.setItem('question', JSON.stringify(response.data))
       setFile(null)
       setSuccess(true)
       setIsModalOpen(true)
     } catch (error) {
       console.error('Error uploading file:', error)
-      alert('파일 업로드에 문제가 발생하였습니다. 다시시도해주세요.')
+      setErrorMessage('다시 제출해주세요.')
+    } finally {
+      setIsModalOpen(true) // Show the modal whether successful or not
     }
   }
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -85,7 +91,7 @@ function FileUploadForm({
       {isModalOpen && (
         <ModalFrame _handleModal={closeModal}>
           <h2 className=" prose-xl px-4 py-2 font-bold text-black">
-            파일이 성공적으로 제출되었습니다!
+            {errorMessage || '파일이 성공적으로 제출되었습니다!'}
           </h2>
         </ModalFrame>
       )}

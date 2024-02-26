@@ -36,7 +36,7 @@ function Header({ title }: { title?: string }) {
                 </svg>
               </button>
             </Link>
-            <Link to="/watch" className="flex items-center text-gray-600">
+            <Link to="/video" className="flex items-center text-gray-600">
               <button className="bg-blue-500 prose prose-xl hidden rounded-md px-4 py-2 font-bold text-gray-400 hover:bg-gray-200 md:block">
                 면접 영상 보러가기
               </button>
@@ -62,7 +62,11 @@ function Header({ title }: { title?: string }) {
                 </svg>
               </button>
             </Link>
-            <Link to="/404" className="flex items-center text-gray-600">
+            <a
+              href="https://github.com/SW-Annovation/FE---AIM"
+              target="_blank"
+              className="flex items-center text-gray-600"
+            >
               <button className="bg-blue-500 prose prose-xl hidden rounded-md px-4 py-2 font-bold text-gray-400 hover:bg-gray-200 md:block">
                 코드보기
               </button>
@@ -82,7 +86,7 @@ function Header({ title }: { title?: string }) {
                   />
                 </svg>
               </button>
-            </Link>
+            </a>
             <Link to="/404" className="flex items-center text-gray-600">
               <button className="bg-blue-500 prose prose-xl hidden rounded-md px-4 py-2 font-bold text-gray-400 hover:bg-gray-200 md:block">
                 로그인

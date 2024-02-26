@@ -1,17 +1,17 @@
 {
   "version": "4.0.0",
-  "name": "holly-react",
-  "description": "React version of Holly",
-  "author": "Luke McDonald (https://lukemcdonald.com/)",
-  "homepage": "https://lukemcdonald.github.io/holly-react",
+  "name": "Focus",
+  "description": "React version of Focus",
+  "author": "Lexxsh",
+  "homepage": "none",
   "keywords": [],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukemcdonald/holly-react.git"
+    "url": "https://github.com/SW-Annovation/FE---AIM"
   },
   "bugs": {
-    "url": "https://github.com/lukemcdonald/holly-react/issues"
+    "url": "https://github.com/SW-Annovation/FE---AIM"
   },
   "scripts": {
     "build": "NODE_ENV=production run-s build:*",

@@ -10,7 +10,24 @@ export default function FaqsPage() {
   const navigate = useNavigate()
   const videoRef = useRef(null)
   const handleStorageOption = (option) => {
+    let numericValue
+
+    switch (option) {
+      case '서버에 저장':
+        numericValue = 1
+        break
+      case '로컬에 저장':
+        numericValue = 2
+        break
+      case '저장하지 않음':
+        numericValue = 3
+        break
+      default:
+        numericValue = null
+    }
+
     setStorageOption((prevOption) => (prevOption === option ? '' : option))
+    localStorage.setItem('storageOption', JSON.stringify(numericValue))
   }
 
   const handleNextPage = () => {

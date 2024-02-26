@@ -1,4 +1,3 @@
-import { Article } from '@/components/article'
 import { Layout } from '@/components/layout'
 import { useState } from 'react'
 import { NewsletterForm } from '@/components/newsletter-form'

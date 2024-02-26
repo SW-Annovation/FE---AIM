@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import Chatbot from '../components/Chatbot/Chatbot'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import { getSpeech } from '@/components/Chatbot/useSpeechToText'
+import axios from 'axios'
 const Container = styled.div`
   height: 100vh;
   z-index: 10;
@@ -86,6 +88,7 @@ function InterviewPage() {
     }
   }, [isRecording, startTime])
   const startRecording = () => {
+    const stageOption = localStorage.getItem('stageOption')
     if (isVideoPlaying) {
       const stream = videoRef.current.srcObject
       mediaRecorderRef.current = new MediaRecorder(stream)
@@ -97,17 +100,36 @@ function InterviewPage() {
         }
       }
 
-      mediaRecorderRef.current.onstop = () => {
+      mediaRecorderRef.current.onstop = async () => {
         const blob = new Blob(chunks, { type: 'video/mp4' })
         const url = URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        document.body.appendChild(a)
-        a.style = 'display: none'
-        a.href = url
-        a.download = 'recorded.mp4'
-        a.click()
-        window.URL.revokeObjectURL(url)
-        setButtonText('녹화 시작하기') // 녹화가 끝나면 버튼 텍스트 업데이트
+        const formData = new FormData()
+        formData.append('video', blob, 'recorded.mp4')
+        try {
+          const response = await axios.post('http://3.142.40.252:8080/video-test', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          })
+
+          // 서버 응답에 따른 처리
+          console.log('서버 응답:', response.data)
+        } catch (error) {
+          console.error('서버 전송 에러:', error)
+        }
+        if (stageOption === '2') {
+          const a = document.createElement('a')
+          document.body.appendChild(a)
+          a.style = 'display: none'
+          a.href = url
+          a.download = 'recorded.mp4'
+          a.click()
+          window.URL.revokeObjectURL(url)
+          setButtonText('녹화 시작하기') // 녹화가 끝날 때 버튼 텍스트 업데이트
+        } else {
+          // "stageoption"이 2가 아닐 때 다운로드하지 않음
+          setButtonText('녹화 시작하기') // 녹화가 끝날 때 버튼 텍스트 업데이트
+        }
       }
 
       mediaRecorderRef.current.start()
@@ -136,6 +158,17 @@ function InterviewPage() {
   }
   function ResultButton() {
     navigate('/result')
+  }
+  const readMessage = (text) => {
+    const storedQuestion = localStorage.getItem('question')
+
+    if (storedQuestion) {
+      // Use the getSpeech function to read the question
+      getSpeech(storedQuestion)
+      console.log(storedQuestion)
+    } else {
+      console.log('No question available in local storage.')
+    }
   }
   return (
     <Container>
@@ -176,8 +209,11 @@ function InterviewPage() {
         >
           {buttonText}
         </button>
-        <button className="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">
-          질문보기
+        <button
+          onClick={() => readMessage('질문듣기')}
+          className="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200"
+        >
+          질문듣기
         </button>
         <button
           className="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200"
